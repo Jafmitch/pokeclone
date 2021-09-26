@@ -130,6 +130,12 @@ export default {
                 this.stats.type = [this.typeVal1];
                 if (this.typeVal2 && this.typeVal2 != this.typeVal1)
                     this.stats.type.push(this.typeVal2);
+                for (let statName of Object.keys(this.stats)) {
+                    if (Number(this.stats[statName]))
+                        this.stats[statName] = Number(this.stats[statName]);
+                    console.log(typeof this.stats[statName]);
+                }
+
                 this.onSave(this.stats);
             } else console.log("No function registered on save");
             this.stats = {};
@@ -156,6 +162,7 @@ label {
     font-weight: bold;
 }
 .container {
+    padding: 5px;
     text-align: left;
 }
 .extra-space {

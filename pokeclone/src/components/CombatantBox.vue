@@ -1,32 +1,31 @@
 <template>
     <div>
+        <div class="combatant-title">{{ playerName }}</div>
         <div class="stat-box-container">
             <div class="padding"><stat-display :stats="stats" /></div>
         </div>
         <div class="space-between"></div>
-        <div class="stat-box-container">
-            <div class="padding">
-                <stat-creator :onSave="updateStats" />
-            </div>
-        </div>
+        <div><button v-on:click="editStats">Edit Stats</button></div>
     </div>
 </template>
 
 <script>
-// import { DEFAULT_STATS } from "../scripts/constants";
-import StatCreator from "./StatCreator.vue";
 import StatDisplay from "./StatDisplay.vue";
 
 export default {
-    components: { StatCreator, StatDisplay },
+    components: { StatDisplay },
     methods: {
-        updateStats(newStats) {
-            for (let statName of Object.keys(newStats))
-                if (newStats[statName])
-                    this.stats[statName] = newStats[statName];
+        editStats() {
+            if (this.edit) this.edit(this.playerName);
         },
     },
     props: {
+        edit: {
+            type: Function,
+        },
+        playerName: {
+            type: String,
+        },
         stats: {
             type: Object,
         },
@@ -35,6 +34,12 @@ export default {
 </script>
 
 <style scoped>
+.combatant-title {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
 .padding {
     padding: 10px;
 }

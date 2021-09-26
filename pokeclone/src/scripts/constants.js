@@ -13,6 +13,22 @@ export const DEFAULT_STATS = {
     type: [],
 };
 
+export const STAT_BOUNDS = {
+    MAX: 250,
+    MIN: 5,
+};
+
+export const STAT_NAMES = [
+    "agility",
+    "attunement",
+    "fortitude",
+    "guard",
+    "health",
+    "luck",
+    "power",
+    "stamina",
+];
+
 export const TYPE_COLORS = {
     air: "#009bd4",
     earthen: "#523c00",
